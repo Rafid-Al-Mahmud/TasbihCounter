@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tasbih Counter</title>
+<link rel="icon" type="image/x-icon" href="tasbih.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:cursive, arial;}
+h1{
+/*text-align:center;*/
+padding:30px 10px;
+}
+p{
+  font-size: 30px;
+  text-align:center;
+}
+img{width:200px;border-radius:20px;}
+.box-container{
+  height:200px;
+  margin:20px 0px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  align-content:space-around;
+}
+.box{
+  height:40px;
+  display:inline;
+  padding:10px;
+  background:#059669;
+  color:white;
+  border-radius:5px;
+  font-family:cursive, arial;
+  /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+  box-shadow: #22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px;
+  user-select:none;
+}
+.box:active{
+background:#34d399;
+/*box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;*/
+box-shadow: #22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px;
+}
+.btn{
+  display:block;
+  text-align:center;
+  cursor:pointer;
+}
+.btn:active{background:#059669;}
+@media screen and (min-width: 480px) {
+  .btn{width:80%;}
+}
+.flex-container{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  align-content:space-around;
+}
+.logo{margin:10px 0px;}
+</style>
+</head>
+<body>
+
+<h1>Tasbih Counter</h1>
+<div class="logo flex-container">
+  <img src="tasbih.jpg">
+</div>
+<p>You counted <span>0</span> times</p>
+<div class="box-container">
+	<div class="box">SUBHRANALLAH</div>
+	<div class="box">ALHRAMDULILLAH</div>
+	<div class="box">ALLAHUAKHBAR</div>
+</div>
+<div class="flex-container">
+  <div class="box btn">Click Me to Count</div>
+</div>
+
+<script>
+var btn = document.querySelector(".btn");
+var t = document.querySelector("span");
+var box = document.querySelectorAll(".box");
+var i = 0;
+var Box = 0;
+btn.addEventListener("click",()=>{
+	//box[Box].style.boxShadow="rgba(0, 0, 0, 0.1) -4px 9px 25px -6px";
+  //----------Reset All Box Shadows----------
+	//box[b].style.boxShadow="#22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px";
+	for(let b=0;b<box.length;b++){box[b].style.boxShadow="#22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px";}
+
+  
+  //if(e.key==" "){
+	box[Box].style.backgroundColor="#059669";
+    if(i==33) {i=0; Box=(Box==0)?1:(Box==1)?2:(Box==2)?0:false;}
+    i++; t.innerHTML=i;
+    box[Box].style.backgroundColor="#34d399";
+  //}
+  setTimeout(()=>{
+    box[Box].style.boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px";
+  	box[Box].style.backgroundColor="#059669";
+  },100)
+});
+addEventListener("keypress",(e)=>{
+	//box[Box].style.boxShadow="rgba(0, 0, 0, 0.1) -4px 9px 25px -6px";
+  //----------Reset All Box Shadows----------
+	//box[Box].style.boxShadow="#22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px";
+  for(let b=0;b<box.length;b++){box[b].style.boxShadow="#22c55e 0px 1px 2px 0px, #22c55e 0px 2px 6px 2px";}
+
+
+  if(e.key==" " || e.key=="Enter"){
+	  box[Box].style.backgroundColor="#059669";
+    if(i==33) {i=0; Box=(Box==0)?1:(Box==1)?2:(Box==2)?0:false;}
+    i++; t.innerHTML=i;
+    box[Box].style.backgroundColor="#34d399";
+  }
+});
+addEventListener("keyup",(e)=>{
+  box[Box].style.boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px";
+  box[Box].style.backgroundColor="#059669";
+});
+</script>
+<script src='https://rafid-al-mahmud.github.io/cdn/controller.js'></script>
+
+</body>
+</html>
